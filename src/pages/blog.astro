@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+const allPosts = await Astro.glob('./posts/*.md')
+import BlogPost from '../components/BlogPost.astro'
+---
+
+<BaseLayout pageTitle='My Astro Learning Blog'>
+  <p>This is where I will post about my journey learning Astro.</p>
+
+  <ul>
+    {
+      allPosts.map((post) => (
+        <BlogPost url={post.url} title={post.frontmatter.title} />
+      ))
+    }
+  </ul>
+</BaseLayout>
